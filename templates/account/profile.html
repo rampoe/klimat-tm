@@ -1,0 +1,16 @@
+{% extends "_base.html" %}
+
+{% block content %}
+  <h2>{{ user.username }}'s profile</h2>
+
+  {% if quiz_stats %}
+    <div class="hero-wrap container ptb-100">
+      <h3>Quiz Statistics:</h3>
+      <ul>
+        {% for stat in quiz_stats %}<li>{{ stat.quiz.title }} - Score: {{ stat.score }}</li>{% endfor %}
+      </ul>
+    {% else %}
+      <p>No quiz statistics available.</p>
+    {% endif %}
+  </div>
+{% endblock content %}

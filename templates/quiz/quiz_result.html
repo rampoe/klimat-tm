@@ -1,0 +1,25 @@
+{% extends "_base.html" %}
+
+{% block content %}
+  <div class="hero-wrap container ptb-100">
+    <h2>Quiz Result</h2>
+    <p>Quiz Title: {{ quiz.title }}</p>
+    <p>Your Score: {{ score }}/{{ questions.count }}</p>
+
+    <h3>Correct Answers:</h3>
+    <ul>
+      {% for question in questions %}
+        <li>
+          <strong>{{ question.text }}</strong>
+          {% for answer in question.answer_set.all %}
+            {% if answer.is_correct %}<span>{{ answer.text }}</span>{% endif %}
+          {% endfor %}
+        </li>
+      {% endfor %}
+    </ul>
+
+    <p>
+      <a href="{% url "quiz_list" %}">Back to Quiz List</a>
+    </p>
+  </div>
+{% endblock content %}
